@@ -25,7 +25,7 @@
 html{scroll-behavior:smooth}
 body{margin:0;font-family:var(--font-body);font-size:16px;line-height:1.65;color:var(--ink);background-color:var(--bg);
   background-image:radial-gradient(var(--dot) 1px,transparent 1px);background-size:24px 24px;overflow-x:clip;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 120px}
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 56px}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:64px}
 .bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px}
@@ -285,10 +285,6 @@ p{margin:0}
 </footer>
 </div>
 
-<div class="tools" role="toolbar" aria-label="Điều khiển hiệu ứng">
-  <button class="tb" id="tb-replay" type="button" data-en="Replay">Dựng lại</button>
-  <button class="tb" id="tb-skip" type="button" data-en="Skip">Bỏ qua</button>
-</div>
 <div class="layer" id="layer" aria-hidden="true"><div id="ghosts"></div><div id="curs"></div></div>
 <script>
 (()=>{
@@ -558,8 +554,6 @@ $$('.lg').forEach(b=>b.addEventListener('click',()=>{
 try{ if(localStorage.getItem('lang')==='en') setLang('en') }catch(e){}
 
 /* ---------- nút điều khiển ---------- */
-$('#tb-replay').addEventListener('click',start);
-$('#tb-skip').addEventListener('click',skip);
 $('#copy').addEventListener('click',async()=>{
   const addr=$('#addr'), lab=$('#copy span'); let ok=false;
   try{await navigator.clipboard.writeText(addr.textContent.trim());ok=true}
