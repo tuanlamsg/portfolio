@@ -68,6 +68,11 @@ p{margin:0}
 .fact:first-child{border-top:0}
 .fact dt{font:500 11px/1.8 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .fact dd{margin:0;font-size:15px}
+.ai{display:flex;flex-direction:column;gap:16px}
+.ai .intro{max-width:66ch;color:var(--muted)}
+.ai-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 40px}
+.ai-list li{min-width:0;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
+.ai-list strong{display:block;margin-bottom:4px;color:var(--ink);font-size:16px;font-weight:600}
 .svc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .proj-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .card{display:flex;flex-direction:column;gap:12px;padding:22px;border:1px solid var(--line);border-radius:4px;background:var(--soft);min-width:0}
@@ -141,7 +146,7 @@ p{margin:0}
 .cur .i{display:none;position:absolute;left:0;top:0;overflow:visible}
 .cur[data-m="arrow"] .i-arrow,.cur[data-m="cross"] .i-cross,.cur[data-m="ibeam"] .i-ibeam,.cur[data-m="pen"] .i-pen{display:block}
 .cf{fill:var(--cc)}.cs{stroke:var(--cc);fill:none}
-@media (max-width:700px){.svc-grid{grid-template-columns:minmax(0,1fr)}.xp-row{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:700px){.ai-list{grid-template-columns:minmax(0,1fr)}.svc-grid{grid-template-columns:minmax(0,1fr)}.xp-row{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:760px){.about-grid{grid-template-columns:minmax(0,1fr);gap:28px}}
 @media (max-width:700px){.proj-grid{grid-template-columns:minmax(0,1fr)}.wrap{gap:48px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.status p:first-child::before{animation:none}}
@@ -185,10 +190,21 @@ p{margin:0}
       <dl class="facts" data-build="box">
         <div class="fact" data-build="text"><dt data-en="Experience">Kinh nghiệm</dt><dd data-en="7+ years">Hơn 7 năm</dd></div>
         <div class="fact" data-build="text"><dt data-en="Expertise">Chuyên môn</dt><dd data-en="Design systems, UX architecture, usability testing">Design systems, kiến trúc UX, kiểm thử khả dụng</dd></div>
-        <div class="fact" data-build="text"><dt data-en="Tools">Công cụ</dt><dd>Figma, Adobe Creative Suite</dd></div>
+        <div class="fact" data-build="text"><dt data-en="Tools">Công cụ</dt><dd>Figma, Adobe Creative Suite, Claude</dd></div>
         <div class="fact" data-build="text"><dt data-en="Education">Học vấn</dt><dd data-en="Design and Visual Communications, Kent International College (2009–2011)">Thiết kế &amp; Truyền thông thị giác, Kent International College (2009–2011)</dd></div>
         <div class="fact" data-build="text"><dt data-en="Languages">Ngôn ngữ</dt><dd data-en="Proficient English">Tiếng Anh thành thạo</dd></div>
       </dl>
+    </div>
+    <hr class="rule" data-build="line">
+    <div class="ai">
+      <h3 data-build="text" data-en="Working with AI (Claude)">Làm việc cùng AI (Claude)</h3>
+      <p class="intro" data-build="text" data-en="I use Claude as an assistant in my design process to speed up repetitive work and to spend more time on the parts that need a designer's judgment. AI makes me faster, but I stay responsible for the design decisions and I always check the results before using them.">Mình dùng Claude như một trợ lý trong quy trình thiết kế để làm nhanh các việc lặp lại, và dành thời gian cho phần cần phán đoán của người thiết kế. AI giúp mình nhanh hơn, còn quyết định thiết kế vẫn do mình chịu trách nhiệm và mình luôn kiểm tra lại kết quả trước khi dùng.</p>
+      <ul class="ai-list">
+        <li data-build="text" data-en="&lt;strong&gt;Research synthesis&lt;/strong&gt;Grouping user feedback, interview notes and app store reviews into clear themes so I can find priorities faster."><strong>Tổng hợp nghiên cứu</strong>Gom phản hồi người dùng, ghi chú phỏng vấn và đánh giá trên cửa hàng ứng dụng thành các nhóm vấn đề rõ ràng, để mình tìm ra điểm cần ưu tiên nhanh hơn.</li>
+        <li data-build="text" data-en="&lt;strong&gt;Exploring directions&lt;/strong&gt;Asking Claude for several approaches to a user flow or a design question, then choosing and refining the best one."><strong>Khám phá hướng thiết kế</strong>Nhờ Claude đưa ra nhiều cách tiếp cận cho một luồng người dùng hoặc một câu hỏi thiết kế, rồi mình chọn và tinh chỉnh hướng tốt nhất.</li>
+        <li data-build="text" data-en="&lt;strong&gt;Interface copy and documentation&lt;/strong&gt;Writing and reviewing interface copy, component descriptions for the design system and handoff notes for developers."><strong>Nội dung giao diện và tài liệu</strong>Viết và rà soát nội dung giao diện, mô tả thành phần cho hệ thống thiết kế và ghi chú bàn giao cho lập trình viên.</li>
+        <li data-build="text" data-en="&lt;strong&gt;Quick working prototypes&lt;/strong&gt;Using Claude to write code for test pages, prototypes and small tools so ideas get validated early. This portfolio was built with Claude too."><strong>Dựng nhanh bản chạy thử</strong>Dùng Claude viết mã cho trang thử nghiệm, prototype và những công cụ nhỏ để ý tưởng được kiểm chứng sớm. Trang portfolio này cũng được dựng cùng Claude.</li>
+      </ul>
     </div>
   </div>
 </section>
