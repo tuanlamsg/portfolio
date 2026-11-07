@@ -91,7 +91,7 @@ p{margin:0}
 .xp-row{display:grid;grid-template-columns:170px minmax(0,1fr);gap:8px 24px;padding:20px 0;border-top:1px solid var(--line)}
 .xp-row:first-child{border-top:0;padding-top:0}
 .xp-row .when{font:500 12px/1.8 var(--font-mono);color:var(--muted)}
-.xp-row .org{font:500 12px/1.6 var(--font-mono);letter-spacing:.04em;color:var(--accent-ink)}
+.xp-row .org{font:600 13px/1.6 var(--font-mono);letter-spacing:.04em;color:#0A9473}
 .xp-row ul{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:15px;display:flex;flex-direction:column;gap:6px}
 .xp-row .sum{margin-top:8px;color:var(--muted);font-size:15px}
 .link{font:600 13px/1.5 var(--font-mono)}
@@ -583,6 +583,12 @@ function skip(){
 const UI={vi:{copy:'Sao chép',copied:'Đã sao chép',sel:'Đã chọn, nhấn Ctrl/⌘+C',tools:'Điều khiển hiệu ứng'},
   en:{copy:'Copy',copied:'Copied',sel:'Selected, press Ctrl/⌘+C',tools:'Animation controls'}};
 let lang='vi';
+const BLK='p,li,dd,dt,blockquote,figcaption,h1,h2,h3,h4,.desc,.intro,.lede,.sub';
+function nb(h){h=h.replace(/(\d)–(\d)/g,'$1⁠–⁠$2');const t=document.createElement('div');t.innerHTML=h;if(t.textContent.trim().split(/\s+/).length<4)return h;const w=document.createTreeWalker(t,NodeFilter.SHOW_TEXT),ns=[];let n;while(n=w.nextNode())if(n.nodeValue.trim())ns.push(n);if(!ns.length)return h;const l=ns[ns.length-1],v=l.nodeValue,m=v.replace(/\s+$/,''),i=m.lastIndexOf(' ');if(i>0){l.nodeValue=v.slice(0,i)+'\u00A0'+v.slice(i+1)}else if(ns.length>1){const p=ns[ns.length-2];if(/\s$/.test(p.nodeValue))p.nodeValue=p.nodeValue.replace(/\s+$/,'\u00A0')}l.nodeValue=l.nodeValue.replace(/-(?=[^\s ]*$)/g,'-⁠');return t.innerHTML}
+function nbAll(h,self){if(self)return nb(h);const d=document.createElement('div');d.innerHTML=h;d.querySelectorAll(BLK).forEach(function(x){if(!x.querySelector(BLK))x.innerHTML=nb(x.innerHTML)});return d.innerHTML}
+document.querySelectorAll('[data-en]').forEach(function(e){var self=!e.querySelector(BLK);e.innerHTML=nbAll(e.innerHTML,self);e.setAttribute('data-en',nbAll(e.getAttribute('data-en'),self))});
+document.querySelectorAll(BLK).forEach(function(e){if(e.closest('[data-en]')||e.querySelector(BLK))return;e.innerHTML=nb(e.innerHTML)});
+
 $$('[data-en]').forEach(e=>{e.dataset.vi=e.innerHTML});
 $$('[data-alt-en]').forEach(e=>{e.dataset.altVi=e.getAttribute('alt')});
 function setLang(l){
