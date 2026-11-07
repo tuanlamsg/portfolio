@@ -308,7 +308,7 @@ mark{background:color-mix(in srgb,var(--accent) 18%,transparent);color:inherit;p
 </div>
 <script>(function(){
 var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
-var lang='vi';try{lang=localStorage.getItem('lang')||'vi'}catch(e){}
+var lang='en';try{lang=localStorage.getItem('lang')||'en'}catch(e){}
 const BLK='p,li,dd,dt,blockquote,figcaption,h1,h2,h3,h4,.desc,.intro,.lede,.sub';
 function nb(h){h=h.replace(/(\d)–(\d)/g,'$1⁠–⁠$2');const t=document.createElement('div');t.innerHTML=h;if(t.textContent.trim().split(/\s+/).length<4)return h;const w=document.createTreeWalker(t,NodeFilter.SHOW_TEXT),ns=[];let n;while(n=w.nextNode())if(n.nodeValue.trim())ns.push(n);if(!ns.length)return h;const l=ns[ns.length-1],v=l.nodeValue,m=v.replace(/\s+$/,''),i=m.lastIndexOf(' ');if(i>0){l.nodeValue=v.slice(0,i)+' '+v.slice(i+1)}else if(ns.length>1){const p=ns[ns.length-2];if(/\s$/.test(p.nodeValue))p.nodeValue=p.nodeValue.replace(/\s+$/,' ')}l.nodeValue=l.nodeValue.replace(/-(?=[^\s ]*$)/g,'-⁠');return t.innerHTML}
 function nbAll(h,self){if(self)return nb(h);const d=document.createElement('div');d.innerHTML=h;d.querySelectorAll(BLK).forEach(function(x){if(!x.querySelector(BLK))x.innerHTML=nb(x.innerHTML)});return d.innerHTML}

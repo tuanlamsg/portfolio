@@ -605,7 +605,8 @@ $$('.lg').forEach(b=>b.addEventListener('click',()=>{
   setLang(l);
   try{localStorage.setItem('lang',l)}catch(e){}
 }));
-try{ if(localStorage.getItem('lang')==='en') setLang('en') }catch(e){}
+let _st=null;try{_st=localStorage.getItem('lang')}catch(e){}
+if(_st!=='vi') setLang('en');
 
 /* ---------- nút điều khiển ---------- */
 $('#copy').addEventListener('click',async()=>{
